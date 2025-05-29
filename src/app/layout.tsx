@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Tektur } from "next/font/google";
 import type { Metadata, Viewport } from "next";
+import Footer from "@/components/Footer";
 
 const tektur = Tektur({
   subsets: ["latin"],
@@ -24,6 +25,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`${tektur.className} antialiased`}>
         {children}
+
+        <Footer />
       </body>
     </html>
   );
