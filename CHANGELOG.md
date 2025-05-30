@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1](https://github.com/JhojanRop/404-tech/compare/v0.3.0...v0.3.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* footer sizes ([fe4af46](https://github.com/JhojanRop/404-tech/commit/fe4af46d0e38438a4e6b8912f5831117d5293664))
+* header and footer sizes ([4d86355](https://github.com/JhojanRop/404-tech/commit/4d86355b4f1d782257263ab1a1c283b3e762162a))
+* header size and position. Update layout padding ([bf02c4e](https://github.com/JhojanRop/404-tech/commit/bf02c4eddaa59895b33585d4ff7b65e095b3fe7d))
+
 ## [0.3.0](https://github.com/JhojanRop/404-tech/compare/v0.2.0...v0.3.0) (2025-05-30)
 
 
