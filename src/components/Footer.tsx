@@ -79,8 +79,8 @@ function ListItems({ data }: { data: { name: string, href: string }[] }) {
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-white sm:fixed bottom-0">
-      <div className="mx-auto max-w-7xl px-6 pt-16 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
+    <footer className="w-full min-h-[40dvh] pt-10 pb-3 bg-white flex items-center justify-center">
+      <div className="max-w-7xl w-11/12 h-full mx-auto flex flex-col justify-between gap-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-3 md:space-y-8 flex justify-center md:items-start items-center flex-col xl:col-span-1">
             <Logo width={200} />
@@ -114,8 +114,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-sm/6 text-gray-600">&copy; 2025 404 tech. All rights reserved.</p>
+        <div className="border-t border-gray-900/10 pt-5">
+          <p className="text-sm/6 text-gray-600 text-center">&copy; 2025 404 tech. All rights reserved.</p>
         </div>
       </div>
     </footer>
