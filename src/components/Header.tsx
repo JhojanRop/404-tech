@@ -20,8 +20,8 @@ export default function Header() {
   const activePath = `/${pathname.split('/')[1] || ''}`;
 
   return (
-    <header className="bg-white">
-      <nav aria-label="Global" className="flex items-center justify-between p-6 py-4 lg:px-8">
+    <header className="w-full bg-white h-20 flex items-center fixed top-0 z-50 shadow-sm">
+      <nav aria-label="Global" className="w-full flex items-center px-6 justify-between">
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">404 Tech Store</span>
