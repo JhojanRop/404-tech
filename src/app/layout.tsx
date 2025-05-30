@@ -24,7 +24,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${tektur.className} antialiased`}>
+      <body className={`${tektur.className} antialiased pt-20`}>
         <Header />
         {children}
         <Footer />
