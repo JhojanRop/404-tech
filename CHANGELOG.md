@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.0](https://github.com/JhojanRop/404-tech/compare/v0.2.0...v0.3.0) (2025-05-30)
+
+
+### Features
+
+* Add Footer component to RootLayout ([ffcc76c](https://github.com/JhojanRop/404-tech/commit/ffcc76c4bdb9da796e0aff97241315a776b21a35))
+* Add Header component ([71cb970](https://github.com/JhojanRop/404-tech/commit/71cb970b0c7cd00bb0d3a5b524e9d72d8198fce4))
+* Add HeroIcons library ([03c0105](https://github.com/JhojanRop/404-tech/commit/03c01058766c71524f5305c95cfcae683f74a933))
+* Create Footer component ([9827eaa](https://github.com/JhojanRop/404-tech/commit/9827eaa3b7b9e06668c8734076873f5e96c65f88))
+* footer component ([75add71](https://github.com/JhojanRop/404-tech/commit/75add7166f001e388a5f1e7cd5eb86e835c29687))
+* header & footer components ([7f3a4d7](https://github.com/JhojanRop/404-tech/commit/7f3a4d7eb288e6d4fc03b4308536f3b084cdc1a6))
+* header & footer components ([7f3a4d7](https://github.com/JhojanRop/404-tech/commit/7f3a4d7eb288e6d4fc03b4308536f3b084cdc1a6))
+* header component ([a2b0739](https://github.com/JhojanRop/404-tech/commit/a2b0739bc34eb712492efea5ebadda5abc1d3f97))
+
+
+### Bug Fixes
+
+* include header component ([2f519d4](https://github.com/JhojanRop/404-tech/commit/2f519d42e243161f73396b6fb103098520b2ce3d))
+
 ## [0.2.0](https://github.com/JhojanRop/404-tech/compare/v0.1.0...v0.2.0) (2025-05-28)
 
 
