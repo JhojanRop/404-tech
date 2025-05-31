@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/JhojanRop/404-tech/compare/v0.3.1...v0.4.0) (2025-05-31)
+
+
+### Features
+
+* Add feature for images ([2ac7aaa](https://github.com/JhojanRop/404-tech/commit/2ac7aaa1a4ed3b74e152a33930cd5f8f60d7863b))
+* Add ProductCard component with cart functionality and update Product type ([f612ab8](https://github.com/JhojanRop/404-tech/commit/f612ab850357b44e0693a0a9dc7eb32f35bb6cba))
+* Implement API routes for fetching and creating products ([79f72c5](https://github.com/JhojanRop/404-tech/commit/79f72c520cac185994f369f6d67cbd73ea56af2d))
+* implement cart functionality and product management features ([d655333](https://github.com/JhojanRop/404-tech/commit/d65533389e75c6c6a032a089ce9f7ca56c891d76))
+* Product type definition ([8ddb05e](https://github.com/JhojanRop/404-tech/commit/8ddb05e99c9070a4e8441b8a5cebe584fc781120))
+* ProductCard component ([9b4c6ea](https://github.com/JhojanRop/404-tech/commit/9b4c6ea4cbab0445efbab4ee7b388c8918445f61))
+* products endpoints ([0e5ec06](https://github.com/JhojanRop/404-tech/commit/0e5ec0628efa2cd2c7f8d8d7c669227a1fed4027))
+
 ## [0.3.1](https://github.com/JhojanRop/404-tech/compare/v0.3.0...v0.3.1) (2025-05-30)
 
 
