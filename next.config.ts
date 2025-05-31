@@ -23,6 +23,9 @@ const nextConfig: NextConfig = {
     fileLoaderRule.exclude = /\.svg$/i
     return config
   },
+  images: {
+    remotePatterns: [new URL("https://c1.neweggimages.com/**")],
+  }
 };
 
 export default nextConfig;
