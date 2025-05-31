@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
 import Logo from '@/../public/Logo.svg'
+import { useCart } from '@/context/CartContext'
 
 const navigation = [
   { name: 'Home', icon: <HomeIcon width={18} />, href: '/' },
@@ -15,6 +16,8 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { state } = useCart()
+  const cartCount = state.cart.reduce((acc, item) => acc + item.quantity, 0)
 
   const pathname = usePathname();
   const activePath = `/${pathname.split('/')[1] || ''}`;
@@ -51,7 +54,7 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-4">
-          <Link href="/cart" data-count="1" className="group flex items-center p-2 border rounded-full relative after:content-[attr(data-count)] after:absolute after:-top-2.5 after:-right-2.5 after:bg-viridian-500 after:text-black after:text-xs after:font-bold after:rounded-full after:w-6 after:h-6 after:flex after:items-center after:justify-center">
+          <Link href="/cart" data-count={cartCount} className="group flex items-center p-2 border rounded-full relative after:content-[attr(data-count)] after:absolute after:-top-2.5 after:-right-2.5 after:bg-viridian-500 after:text-black after:text-xs after:font-bold after:rounded-full after:w-6 after:h-6 after:flex after:items-center after:justify-center">
             <ShoppingCartIcon
               aria-hidden="true"
               className="size-5 shrink-0 text-black"
@@ -107,7 +110,7 @@ export default function Header() {
                 >
                   <div className='flex items-center justify-between gap-2'>
                     <p>Cart</p>
-                    <p>1</p>
+                    <p>{cartCount}</p>
                   </div>
                 </Link>
                 <Link
