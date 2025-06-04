@@ -15,14 +15,20 @@ export default function ProductCard({ product }: { product: Product }) {
     setProductQuantity(prev => prev + 1);
   };
 
+  const handleButtonClick = (e: React.MouseEvent, callback?: () => void) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (callback) callback();
+  };
+
   return (
-    <Link href={`/product/${product.id}`} className="block group">
+    <Link href={`/product/${product.id}`} className="block">
       <div className="border border-gray-300 rounded-lg bg-white">
         <div className="relative aspect-square w-full px-6 overflow-hidden rounded-lg bg-white group">
-          {product.discount && <span className="block absolute top-2.5 left-2.5 bg-viridian-600 text-white text-xs font-semibold px-3 py-1.5 rounded-md">Sale {product.discount}%</span>}
+          {product.discount && <span className="block absolute top-2.5 left-2.5 bg-viridian-600 text-white text-xs font-semibold px-3 py-1.5 rounded-md z-10">Sale {product.discount}%</span>}
           <button
             className="block absolute top-4 right-4 text-gray-700 cursor-pointer z-10"
-            onClick={e => { e.stopPropagation(); setIsLiked(!isLiked); }}
+            onClick={e => handleButtonClick(e, () => setIsLiked(!isLiked))}
           >
             <HeartIcon className={`h-6 w-6 ${isLiked ? 'text-red-500 fill-red-500' : ''}`} />
           </button>
@@ -31,7 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
             src={product.images?.[0] || '/placeholder.png'}
             alt={product.name}
             fill
-            className="px-6 object-contain rounded-lg group-hover:scale-105 transition-transform duration-200"
+            className="px-6 py-4 object-contain rounded-lg group-hover:scale-105 transition-transform duration-200"
           />
         </div>
 
@@ -52,13 +58,13 @@ export default function ProductCard({ product }: { product: Product }) {
             <div className="hidden group-hover:flex justify-between items-center py-2">
               <button
                 className="w-4/5 py-2 font-medium bg-viridian-600 text-white rounded-lg cursor-pointer"
-                onClick={e => e.stopPropagation()}
+                onClick={e => handleButtonClick(e)}
               >
                 Buy ${product.price}
               </button>
               <button
                 className="p-2 border relative border-viridian-600 text-viridian-600 rounded-lg cursor-pointer"
-                onClick={e => { e.stopPropagation(); handleAddToCart(); }}
+                onClick={e => handleButtonClick(e, handleAddToCart)}
               >
                 {productQuantity > 0 && (<span className="flex justify-center items-center absolute -top-1.5 -right-1.5 text-white font-medium bg-viridian-600 text-xs w-5 h-5 rounded-full">{productQuantity}</span>)}
                 <ShoppingBagIcon className="h-5 w-5" />
