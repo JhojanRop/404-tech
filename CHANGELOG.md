@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.5.0](https://github.com/JhojanRop/404-tech/compare/v0.4.0...v0.5.0) (2025-06-04)
+
+
+### Features
+
+* refactor ProductCard for improved event handling and styling ([024be17](https://github.com/JhojanRop/404-tech/commit/024be17e6a9ebfd47378180ee4a00c0e5364ad10))
+* reset store page ([5d2d10c](https://github.com/JhojanRop/404-tech/commit/5d2d10ce0be4159626d9402e1640b534f30dfed2))
+* update ProductCard ([b24ae2d](https://github.com/JhojanRop/404-tech/commit/b24ae2d5856574e427629d95cddace3894bd7d76))
+
+
+### Bug Fixes
+
+* ProductCard component ([266c440](https://github.com/JhojanRop/404-tech/commit/266c44092fae0691ad0ce841d17d118e78e5dc6f))
+* ProductCard component ([266c440](https://github.com/JhojanRop/404-tech/commit/266c44092fae0691ad0ce841d17d118e78e5dc6f))
+
 ## [0.4.0](https://github.com/JhojanRop/404-tech/compare/v0.3.1...v0.4.0) (2025-05-31)
 
 
