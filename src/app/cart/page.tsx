@@ -182,7 +182,7 @@ export default function CartPage() {
               <p>
                 or{" "}
                 <Link
-                  href="/store"
+                  href="/catalog"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Continue Shopping
