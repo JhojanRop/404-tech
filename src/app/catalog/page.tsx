@@ -268,8 +268,8 @@ export default function StorePage() {
               {/* Product grid */}
               <section className="lg:col-span-3">
                 <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:col-span-3 lg:grid-cols-3">
-                  {loading && Array.from({ length: 6 }).map((_, index) => (
-                    <ProductCardSkeleton key={index} />
+                  {loading && [1, 2, 3, 4, 5, 6].map(id => (
+                    <ProductCardSkeleton key={`skeleton-${id}`} />
                   ))}
 
                   {!loading && products.length === 0 && (
