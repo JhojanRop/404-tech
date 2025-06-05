@@ -10,7 +10,7 @@ import { useCart } from '@/context/CartContext'
 
 const navigation = [
   { name: 'Home', icon: <HomeIcon width={18} />, href: '/' },
-  { name: 'Store', icon: <BuildingStorefrontIcon width={18} />, href: '/store' },
+  { name: 'Catalog', icon: <BuildingStorefrontIcon width={18} />, href: '/catalog' },
   { name: 'Search', icon: <MagnifyingGlassIcon width={18} />, href: '/search' },
 ]
 
