@@ -25,7 +25,13 @@ const getProducts = async (page: number, limit: number, sort?: string, categorie
     }
   }
 
-  return api.get(`/products?${params.toString()}`) as Promise<{
+  return api.get<{
+    products: Product[];
+    total: number;
+    page: number;
+    limit: number;
+    filters?: { categories?: string[] };
+  }>(`/products?${params.toString()}`) as Promise<{
     products: Product[];
     total: number;
     page: number;
@@ -39,7 +45,10 @@ const getProductById = async (id: number | string) => {
 };
 
 const getCategories = async () => {
-  return api.get("/products/categories") as Promise<{
+  return api.get<{
+    categories: string[];
+    total: number;
+  }>("/products/categories") as Promise<{
     categories: string[];
     total: number;
   }>;
