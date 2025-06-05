@@ -69,7 +69,7 @@ export default function CartPage() {
                       src={product.images?.[0] || ''}
                       width={128}
                       height={128}
-                      className="size-24 rounded-md object-cover sm:size-32"
+                      className="size-24 rounded-md object-contain sm:size-32"
                     />
                   </div>
 
