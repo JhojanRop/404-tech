@@ -290,9 +290,9 @@ export default function StorePage() {
                     <button onClick={() => page > 1 && setPage(prev => prev - 1)} className="inline-flex h-10 items-center rounded-md border border-gray-300 bg-background text-foreground px-4 hover:bg-viridian-700 hover:border-viridian-700 focus:border-viridian-700 focus:ring-2 focus:ring-viridan-600/25 focus:ring-offset-1 focus:ring-offset-viridan-600 focus:outline-hidden cursor-pointer">Previous</button>
                   </div>
                   <div className="hidden space-x-2 sm:flex">
-                    {generatePaginationArray(page, pagesCount).map((pageNumber, index) => (
+                    {generatePaginationArray(page, pagesCount).map((pageNumber) => (
                       <button
-                        key={index}
+                        key={pageNumber}
                         onClick={() => typeof pageNumber === 'number' && setPage(pageNumber)}
                         disabled={typeof pageNumber === 'string'}
                         className={classNames(
