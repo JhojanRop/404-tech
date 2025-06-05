@@ -9,7 +9,7 @@ type State = {
 
 type Action =
   | { type: "ADD_TO_CART"; product: Product }
-  | { type: "REMOVE_FROM_CART"; id: number }
+  | { type: "REMOVE_FROM_CART"; id: number | string }
   | { type: "CLEAR_CART" };
 
 const initialState: State = {

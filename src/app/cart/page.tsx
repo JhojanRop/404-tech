@@ -13,13 +13,8 @@ export default function CartPage() {
     dispatch({ type: "REMOVE_FROM_CART", id: productId });
   };
 
-  // El subtotal debe considerar price y discount si existe
   const subtotal = state.cart.reduce((total, item) => {
-    // Asegura que price sea un número válido
-    const price =
-      typeof item.price === "string"
-        ? parseFloat(item.price.replace("$", "").replace(",", ""))
-        : Number(item.price);
+    const price = Number(item.price);
     return total + (isNaN(price) ? 0 : price * (item.quantity || 1));
   }, 0);
 
