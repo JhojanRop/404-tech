@@ -4,6 +4,7 @@ import { useCart } from "@/context/CartContext";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 export default function CartPage() {
   const { state, dispatch } = useCart();
@@ -17,6 +18,11 @@ export default function CartPage() {
     const price = Number(item.price);
     return total + (isNaN(price) ? 0 : price * (item.quantity || 1));
   }, 0);
+
+  const updateCartQuantity = (productId: number | string, quantity: number) => {
+    if (quantity < 1) return;
+    dispatch({ type: "UPDATE_QUANTITY", id: productId, quantity });
+  };
 
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
@@ -79,15 +85,31 @@ export default function CartPage() {
                           </Link>
                         </h4>
                         <p className="ml-4 text-sm font-medium text-gray-900">
-                          {product.price}
+                          ${product.price}
                         </p>
                       </div>
                       <div className="mt-1 flex items-center space-x-3">
                         <span className="sr-only">Quantity:</span>
                         <div className="flex items-center border border-gray-200 rounded">
+                          <button
+                            type="button"
+                            disabled={product.quantity === 1}
+                            className="px-1 cursor-pointer"
+                            onClick={() => updateCartQuantity(product.id, product.quantity - 1)}
+                          >
+                            <MinusIcon className="h-5 w-5 text-gray-500" />
+                          </button>
                           <span className="px-3 py-1 text-sm font-medium text-gray-900">
                             {product.quantity}
                           </span>
+                          <button
+                            type="button"
+                            disabled={product.quantity === product.stock}
+                            className="px-1 cursor-pointer"
+                            onClick={() => updateCartQuantity(product.id, product.quantity + 1)}
+                          >
+                            <PlusIcon className="h-5 w-5 text-gray-500" />
+                          </button>
                         </div>
                       </div>
                     </div>
