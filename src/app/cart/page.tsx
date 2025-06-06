@@ -170,12 +170,12 @@ export default function CartPage() {
             </div>
 
             <div className="mt-10">
-              <button
-                type="submit"
-                className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none cursor-pointer"
+              <Link
+                href="/checkout"
+                className="block w-full text-center rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-none cursor-pointer"
               >
                 Checkout
-              </button>
+              </Link>
             </div>
 
             <div className="mt-6 text-center text-sm">
