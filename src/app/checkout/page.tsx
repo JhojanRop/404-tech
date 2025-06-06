@@ -550,7 +550,7 @@ export default function CheckoutPage() {
                       </div>
                     </div>
                     <p className="mt-2 text-sm text-gray-500">
-                      Qty: {product.quantity} {product.quantity! > 1 ? "items" : "item"}
+                      Qty: {product.quantity ?? 1} {(product.quantity ?? 1) > 1 ? "items" : "item"}
                     </p>
                   </div>
                 </div>
