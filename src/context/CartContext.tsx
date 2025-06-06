@@ -9,8 +9,9 @@ type State = {
 
 type Action =
   | { type: "ADD_TO_CART"; product: Product }
-  | { type: "REMOVE_FROM_CART"; id: number }
-  | { type: "CLEAR_CART" };
+  | { type: "REMOVE_FROM_CART"; id: number | string }
+  | { type: "CLEAR_CART" }
+  | { type: "UPDATE_QUANTITY"; id: number | string; quantity: number };
 
 const initialState: State = {
   cart: [],
@@ -39,6 +40,15 @@ function cartReducer(state: State, action: Action): State {
       };
     case "CLEAR_CART":
       return initialState;
+    case "UPDATE_QUANTITY":
+      return {
+        ...state,
+        cart: state.cart.map(item =>
+          item.id === action.id
+            ? { ...item, quantity: Math.max(1, action.quantity) }
+            : item
+        ),
+      };
     default:
       return state;
   }
