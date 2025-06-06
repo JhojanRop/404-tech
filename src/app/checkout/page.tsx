@@ -8,10 +8,12 @@ import { COLOMBIA_LOCATIONS } from '@/utils/constants'
 import Link from 'next/link'
 import { consumeDiscountCode } from '@/services/discountCodes'
 import { createOrder } from '@/services/orders'
+import { useRouter } from 'next/navigation'
 
 export default function CheckoutPage() {
   const { state, dispatch } = useCart();
   const products = state.cart;
+  const router = useRouter();
 
   const removeFromCart = (productId: number | string) => {
     dispatch({ type: "REMOVE_FROM_CART", id: productId });
@@ -118,10 +120,12 @@ export default function CheckoutPage() {
         zipcode: formData.postalCode
       };
 
-      const order = await createOrder(orderProducts, shippingInfo, "000");
+      await createOrder(orderProducts, shippingInfo, "000");
 
       dispatch({ type: "CLEAR_CART" });
-      alert(`Order created successfully! ID: ${order.id}`);
+
+      // Redirigir a la página de agradecimiento
+      router.push('/thanks-for-your-purchase');
 
     } catch (error) {
       console.error("Error creating order:", error);
