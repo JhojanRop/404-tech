@@ -21,7 +21,7 @@ export default function CheckoutPage() {
 
   const subtotal = products.reduce((total, item) => {
     const price = Number(item.price);
-    return total + (isNaN(price) ? 0 : price * (item.quantity || 1));
+    return total + (isNaN(price) ? 0 : price * (item.quantity ?? 1));
   }, 0);
 
   const [discountCode, setDiscountCode] = useState({ code: "", amount: 0 });
@@ -52,7 +52,7 @@ export default function CheckoutPage() {
     }
   };
 
-  const discount = Number((subtotal * (discountCode.amount || 0)).toFixed(2));
+  const discount = Number((subtotal * (discountCode.amount ?? 0)).toFixed(2));
   const taxes = Number((subtotal * 0.19).toFixed(2));
   const shipping = 5.99;
   const total = (subtotal - discount + taxes + shipping).toFixed(2);
@@ -109,7 +109,7 @@ export default function CheckoutPage() {
       const orderProducts = products.map(product => ({
         productID: product.id.toString(),
         price: Number(product.price),
-        quantity: product.quantity || 1
+        quantity: product.quantity ?? 1
       }));
 
       // Preparar información de envío
@@ -602,7 +602,7 @@ export default function CheckoutPage() {
             <dl className="mt-10 space-y-6 text-sm font-medium text-gray-500">
               <div className="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd className="text-gray-900">{subtotal}</dd>
+                <dd className="text-gray-900">${subtotal}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="flex">
