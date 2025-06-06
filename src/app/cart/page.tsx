@@ -3,12 +3,10 @@ import { CheckIcon, ClockIcon } from "@heroicons/react/20/solid";
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 export default function CartPage() {
   const { state, dispatch } = useCart();
-  const router = useRouter();
 
   const removeFromCart = (productId: number | string) => {
     dispatch({ type: "REMOVE_FROM_CART", id: productId });
@@ -26,11 +24,6 @@ export default function CartPage() {
 
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
-  };
-
-  const handleCheckout = (e: React.FormEvent) => {
-    e.preventDefault();
-    router.push("/checkout");
   };
 
   return (
@@ -51,7 +44,7 @@ export default function CartPage() {
           )}
         </div>
 
-        <form onSubmit={handleCheckout} className="mt-12">
+        <form onSubmit={(e) => e.preventDefault()} className="mt-12">
           <section aria-labelledby="cart-heading">
             <h2 id="cart-heading" className="sr-only">
               Items in your shopping cart
