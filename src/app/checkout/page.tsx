@@ -153,7 +153,7 @@ export default function CheckoutPage() {
           </div>
 
           <DisclosurePanel>
-            <ul role="list" className="divide-y divide-gray-200 border-b border-gray-200">
+            <ul className="divide-y divide-gray-200 border-b border-gray-200">
               {(products.length > 0) ? (
                 products.map((product) => (
                   <li key={product.id} className="flex space-x-6 py-6">
@@ -256,11 +256,6 @@ export default function CheckoutPage() {
               </div>
             </dl>
           </DisclosurePanel>
-
-          <p className="mt-6 flex items-center justify-between border-t border-gray-200 pt-6 text-sm font-medium text-gray-900">
-            <span className="text-base">Total</span>
-            <span className="text-base">${total}</span>
-          </p>
         </Disclosure>
       </section>
 
@@ -522,7 +517,7 @@ export default function CheckoutPage() {
           Order summary
         </h2>
 
-        <ul role="list" className="flex-auto h-64 divide-y divide-gray-200 overflow-y-auto px-6">
+        <ul className="flex-auto h-64 divide-y divide-gray-200 overflow-y-auto px-6">
           {products.length > 0 ? (
             products.map((product) => (
               <li key={product.id} className="flex space-x-6 py-6">
@@ -539,19 +534,24 @@ export default function CheckoutPage() {
                     <h3 className="text-gray-900">{product.name}</h3>
                     <p className="text-gray-700 font-light">${product.price}</p>
                   </div>
-                  <div className="flex space-x-4">
-                    <Link href="/cart" className="block text-sm font-medium text-viridian-600 hover:text-viridian-500">
-                      Edit
-                    </Link>
-                    <div className="flex border-l border-gray-300 pl-4">
-                      <button
-                        type="button"
-                        onClick={() => removeFromCart(product.id)}
-                        className="text-sm font-medium text-viridian-600 hover:text-viridian-500"
-                      >
-                        Remove
-                      </button>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                    <div className="flex space-x-4">
+                      <Link href="/cart" className="block text-sm font-medium text-viridian-600 hover:text-viridian-500">
+                        Edit
+                      </Link>
+                      <div className="flex border-l border-gray-300 pl-4">
+                        <button
+                          type="button"
+                          onClick={() => removeFromCart(product.id)}
+                          className="text-sm font-medium text-viridian-600 hover:text-viridian-500"
+                        >
+                          Remove
+                        </button>
+                      </div>
                     </div>
+                    <p className="mt-2 text-sm text-gray-500">
+                      Qty: {product.quantity} {product.quantity! > 1 ? "items" : "item"}
+                    </p>
                   </div>
                 </div>
               </li>
@@ -563,42 +563,8 @@ export default function CheckoutPage() {
           )}
         </ul>
 
-        <div className="sticky bottom-0 flex-none border-t border-gray-200 bg-gray-50 p-6">
-          <form>
-            <label htmlFor="discount-code" className="block text-sm/6 font-medium text-gray-700">
-              Discount code
-            </label>
-            <div className="mt-2 flex space-x-4">
-              <input
-                id="discount-code"
-                name="discount-code"
-                type="text"
-                disabled={products.length === 0 || discountLoading}
-                value={discountCode.code}
-                onChange={(e) => {
-                  setDiscountCode({ ...discountCode, code: e.target.value });
-                  if (discountError) setDiscountError("");
-                }}
-                className="block w-full rounded-md bg-white px-3 py-2 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-viridian-600 sm:text-sm/6"
-              />
-              <button
-                type="button"
-                disabled={products.length === 0 || discountLoading || !discountCode.code.trim()}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleDiscountCode(discountCode.code);
-                }}
-                className="rounded-md bg-viridian-600 text-white disabled:bg-gray-200 px-4 text-sm font-medium disabled:text-gray-600 hover:bg-viridian-700 focus:ring-2 focus:ring-viridian-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {discountLoading ? "Applying..." : "Apply"}
-              </button>
-            </div>
-            {discountError && (
-              <p className="mt-2 text-sm text-red-600">{discountError}</p>
-            )}
-          </form>
-
-          <dl className="mt-10 space-y-6 text-sm font-medium text-gray-500">
+        <div className="px-6 pt-6">
+          <dl className="space-y-4 text-sm font-medium text-gray-500">
             <div className="flex justify-between">
               <dt>Subtotal</dt>
               <dd className="text-gray-900">${subtotal}</dd>
@@ -621,17 +587,18 @@ export default function CheckoutPage() {
                   19%
                 </span>
               </dt>
-              <dd className="text-gray-900">${taxes}</dd>
+              <dd className="text-gray-900">${taxes ?? 0}</dd>
             </div>
             <div className="flex justify-between">
               <dt>Shipping</dt>
-              <dd className="text-gray-900">${shipping}</dd>
-            </div>
-            <div className="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900">
-              <dt>Total</dt>
-              <dd className="text-base">${total}</dd>
+              <dd className="text-gray-900">${shipping ?? 0}</dd>
             </div>
           </dl>
+
+          <p className="mt-6 flex items-center justify-between border-t border-gray-200 pt-6 text-sm font-medium text-gray-900">
+            <span className="text-base">Total</span>
+            <span className="text-base">${total}</span>
+          </p>
         </div>
       </section>
     </main>
