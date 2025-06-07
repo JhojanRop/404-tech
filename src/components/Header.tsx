@@ -7,16 +7,18 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Logo from '@/../public/Logo.svg'
 import { useCart } from '@/context/CartContext'
+import { useAuth } from '@/hooks/useAuth'
 
 const navigation = [
   { name: 'Home', icon: <HomeIcon width={18} />, href: '/' },
-  { name: 'Store', icon: <BuildingStorefrontIcon width={18} />, href: '/store' },
-  { name: 'Search', icon: <MagnifyingGlassIcon width={18} />, href: '/search' },
+  { name: 'Catalog', icon: <BuildingStorefrontIcon width={18} />, href: '/catalog' },
+  { name: 'Recommendations', icon: <MagnifyingGlassIcon width={18} />, href: '/recommendations' },
 ]
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { state } = useCart()
+  const { getUserDestination } = useAuth()
   const cartCount = state.cart.reduce((acc, item) => acc + item.quantity, 0)
 
   const pathname = usePathname();
@@ -61,7 +63,7 @@ export default function Header() {
             />
             <span className="sr-only">items in cart, view cart</span>
           </Link>
-          <Link href="/" className="group flex items-center p-2 border rounded-full">
+          <Link href={getUserDestination()} className="group flex items-center p-2 border rounded-full">
             <UserIcon
               aria-hidden="true"
               className="size-5 shrink-0 text-black"
@@ -114,7 +116,7 @@ export default function Header() {
                   </div>
                 </Link>
                 <Link
-                  href="#"
+                  href={getUserDestination()}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                 >
                   My account
