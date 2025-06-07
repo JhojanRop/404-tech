@@ -10,11 +10,11 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { useCart } from '@/context/CartContext'
 
-function classNames(...classes) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function ProductPage() {
   const [product, setProduct] = useState<Product>()
   const { id } = useParams()
   const isLoading = !product
@@ -22,8 +22,10 @@ export default function Example() {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const data = await getProductById(id)
-      setProduct(data)
+      if (typeof id === 'string' || typeof id === 'number') {
+        const data = await getProductById(id)
+        setProduct(data)
+      }
     }
     fetchProduct()
   }, [id])
@@ -57,15 +59,15 @@ export default function Example() {
                 {product?.images?.map((imgUrl, idx) => (
                   <Tab
                     key={idx}
-                    className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-indigo-500/50 focus:ring-offset-4 focus:outline-hidden"
+                    className="group relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium text-gray-900 uppercase hover:bg-gray-50 focus:ring-3 focus:ring-viridian-500/50 focus:ring-offset-4 focus:outline-hidden"
                   >
                     <span className="sr-only">Product image {idx + 1}</span>
                     <span className="absolute inset-0 overflow-hidden rounded-md">
-                      <Image alt={`Product image ${idx + 1}`} src={imgUrl} fill className="object-cover" />
+                      <Image alt={`Product image ${idx + 1}`} src={imgUrl} fill className="object-contain" />
                     </span>
                     <span
                       aria-hidden="true"
-                      className="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 group-data-selected:ring-indigo-500"
+                      className="pointer-events-none absolute inset-0 rounded-md ring-2 ring-transparent ring-offset-2 group-data-selected:ring-viridian-500"
                     />
                   </Tab>
                 ))}
@@ -75,7 +77,7 @@ export default function Example() {
               {product?.images?.map((imgUrl, idx) => (
                 <TabPanel key={idx}>
                   <div className="relative aspect-square w-full sm:rounded-lg overflow-hidden">
-                    <Image alt={`Product image ${idx + 1}`} src={imgUrl} fill className="object-cover" />
+                    <Image alt={`Product image ${idx + 1}`} src={imgUrl} fill className="object-contain" />
                   </div>
                 </TabPanel>
               ))}
@@ -99,7 +101,7 @@ export default function Example() {
                       key={rating}
                       aria-hidden="true"
                       className={classNames(
-                        (product?.rating ?? 0) > rating ? 'text-indigo-500' : 'text-gray-300',
+                        (product?.rating ?? 0) > rating ? 'text-viridian-500' : 'text-gray-300',
                         'size-5 shrink-0',
                       )}
                     />
@@ -119,7 +121,7 @@ export default function Example() {
               <div className="mt-10 flex">
                 <button
                   type="submit"
-                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden sm:w-full disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-viridian-600 px-8 py-3 text-base font-medium text-white hover:bg-viridian-700 focus:ring-2 focus:ring-viridian-500 focus:ring-offset-2 focus:ring-offset-gray-50 focus:outline-hidden sm:w-full disabled:opacity-60 disabled:cursor-not-allowed"
                   disabled={isInCart}
                 >
                   {isInCart ? 'Added to cart' : 'Add to cart'}
