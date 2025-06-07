@@ -1,7 +1,3 @@
-JhojanRop: Crea un readme bien detallado de la aplicación
-
-Workspace: Recopilando información del área de trabajoAquí tienes un README detallado para tu aplicación de recomendaciones de computadores:
-
 ```markdown
 # 404 Tech Store – Sistema de Recomendaciones
 
