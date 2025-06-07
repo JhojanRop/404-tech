@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/JhojanRop/404-tech/compare/v0.6.0...v0.6.1) (2025-06-07)
+
+
+### Bug Fixes
+
+* Update README.md ([d824da8](https://github.com/JhojanRop/404-tech/commit/d824da80a146445bcb9c2f00d6963f0df8a5877c))
+
 ## [0.6.0](https://github.com/JhojanRop/404-tech/compare/v0.5.0...v0.6.0) (2025-06-07)
 
 
