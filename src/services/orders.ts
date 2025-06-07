@@ -1,7 +1,14 @@
 import { api } from "@/lib/api";
 import { Order } from "@/types/order";
 
-export const createOrder = async (
+const getOrders = async (userID: string = "000") => {
+  if (!userID) {
+    throw new Error("User ID is required to fetch orders");
+  }
+  return api.get<Order[]>(`/orders?user_id=${userID}`);
+};
+
+const createOrder = async (
   products: Order["products"],
   shipping: Order["shipping"],
   userID: string = "000"
@@ -28,3 +35,5 @@ export const createOrder = async (
 
   return api.post<Order>("/orders", orderData);
 };
+
+export { createOrder, getOrders };

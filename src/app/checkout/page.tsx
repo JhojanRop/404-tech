@@ -1,16 +1,19 @@
 'use client'
 import { useCart } from '@/context/CartContext'
+import { useAuth } from '@/hooks/useAuth'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useState } from 'react'
-import { COLOMBIA_LOCATIONS } from '@/utils/constants'
 import Link from 'next/link'
 import { consumeDiscountCode } from '@/services/discountCodes'
 import { createOrder } from '@/services/orders'
 import { useRouter } from 'next/navigation'
+import useLocations from '@/hooks/useLocations'
 
 export default function CheckoutPage() {
+  const { states, selectedState, setSelectedState, cities, selectedCity, setSelectedCity } = useLocations();
+  const { user } = useAuth();
   const { state, dispatch } = useCart();
   const products = state.cart;
   const router = useRouter();
@@ -56,14 +59,6 @@ export default function CheckoutPage() {
   const taxes = Number((subtotal * 0.19).toFixed(2));
   const shipping = 5.99;
   const total = (subtotal - discount + taxes + shipping).toFixed(2);
-
-  const [selectedState, setSelectedState] = useState<string>('');
-  const [selectedCity, setSelectedCity] = useState<string>('');
-
-  const states = Object.keys(COLOMBIA_LOCATIONS) as Array<keyof typeof COLOMBIA_LOCATIONS>;
-  const cities = selectedState && states.includes(selectedState as keyof typeof COLOMBIA_LOCATIONS)
-    ? COLOMBIA_LOCATIONS[selectedState as keyof typeof COLOMBIA_LOCATIONS]
-    : [];
 
   const [formData, setFormData] = useState({
     email: '',
@@ -120,7 +115,10 @@ export default function CheckoutPage() {
         zipcode: formData.postalCode
       };
 
-      await createOrder(orderProducts, shippingInfo, "000");
+      // Usar el ID del usuario si está logueado, sino "000"
+      const userId = user?.id || "000";
+
+      await createOrder(orderProducts, shippingInfo, userId);
 
       dispatch({ type: "CLEAR_CART" });
 
@@ -139,7 +137,7 @@ export default function CheckoutPage() {
     <main className="w-full max-w-full lg:flex lg:min-h-full lg:overflow-hidden overflow-x-hidden">
       <h1 className="sr-only">Checkout</h1>
 
-      {/* Mobile order summary */}
+      {/* Mob y */}
       <section aria-labelledby="order-heading" className="bg-gray-50 px-4 py-6 sm:px-6 lg:hidden">
         <Disclosure as="div" className="mx-auto max-w-lg">
           <div className="flex items-center justify-between">
